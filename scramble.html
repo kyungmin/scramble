@@ -1,0 +1,24 @@
+<head>
+  <title>scramble!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<h1>scramble!</h1>
+	<div class="content">
+		{{> scramble}}
+	</div>
+</body>
+
+<template name="scramble">
+	<p class="message start">Build scrambled words into words. Type a letter to get started.</p>
+	<span class="words">
+		{{#each letters}}
+			<span class="letter {{this.color}}">{{this.letter}}</span>
+		{{/each}}
+	</span>
+	<input type="text" autofocus>
+	<p class="message status">You've earned <span class="points">{{points}}</span> points so far.</p>
+	<p class="message fail">Try again.</p>
+	<div class="btn reset">New game</div>
+</template>

@@ -1,0 +1,8 @@
+{
+  "name": "scramble",
+  "version": "0.0.1",
+  "dependencies": {
+    "strapped": "strapped#0.3.14"
+  },
+  "private": true
+}

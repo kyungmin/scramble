@@ -1,0 +1,123 @@
+@import "./.meteor/local/bower/strapped/static/less/strapped.less";
+
+body {
+	background-color: @gray1;
+}
+
+h1 {
+	.sl-24-b;
+	color: @gray7;
+	text-align: center;
+	margin: 100px auto;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+}
+
+.content {
+	position: relative;
+	margin: 0 auto 0;
+	text-align: center;
+}
+
+input[type="text"] {
+	display: none;
+}
+
+.words {
+	text-align: center;
+}
+
+.letter {
+	.sl-44-b;
+	text-transform: uppercase;
+	line-height: 100px;
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	background-color: @gray2;
+	color: @gray7;
+	margin: 5px;
+	border-radius: 3px;
+	transition: background-color;
+	transition-duration: 200ms;
+
+	&.matched {
+		background-color: @white;
+	}
+
+	&.correct {
+		background-color: @forestGreen40;
+		color: @white;
+	}
+
+	&.incorrect {
+		background-color: @imperialRed40;
+		color: @white;
+	}
+}
+
+.message {
+	.sl-20;
+	color: @gray5;
+	margin: 5% auto;
+
+	&.start {
+		margin: 0 0 50px;
+	}
+
+	&.fail {
+		display: none;
+	}
+
+	.points {
+		.sl-20-sb;
+	}
+
+	.animate {
+		.animation(scale, 300ms, ease-in-out, 1);
+	}
+
+}
+
+@-webkit-keyframes scale { .scale }
+@-moz-keyframes scale { .scale }
+@-ms-keyframes scale { .scale }
+@-o-keyframes scale { .scale }
+@keyframes scale { .scale }
+
+.scale() {
+	0% {
+		.transform(scale(1));
+	}
+
+	10% {
+		.transform(scale(1.4));
+	}
+
+	95% {
+		.transform(scale(0.95));
+	}
+
+	100% {
+		.transform(scale(1));
+	}
+}
+
+@media (max-width: 640px) {
+	input[type="text"] {
+		display: block;
+		width: 200px;
+		margin: 20px auto 0;
+	}
+
+	.letter {
+		.sl-24-b;
+		width: 40px;
+		height: 40px;
+		margin: 1px;
+	}
+
+	.message {
+		.sl-16;
+	}
+}
