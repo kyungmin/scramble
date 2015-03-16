@@ -41,7 +41,7 @@ if (Meteor.isClient) {
           $(".points").removeClass("animate");
           $(".letter").removeClass("correct");
           getWord();
-        }, 300);
+        }, 400);
       } else {
         $(".letter").addClass("incorrect");
         $(".message.status").hide();

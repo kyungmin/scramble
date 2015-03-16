@@ -48,11 +48,13 @@ input[type="text"] {
 	&.correct {
 		background-color: @forestGreen40;
 		color: @white;
+		.animation(blowup, 300ms, ease-in, 1);
 	}
 
 	&.incorrect {
 		background-color: @imperialRed40;
 		color: @white;
+		.animation(shake, 300ms, linear, 1);
 	}
 }
 
@@ -82,13 +84,13 @@ input[type="text"] {
 .footer {
 	text-align: center;
 	padding: 5% 0;
-	font-size: 12px;
+	font-size: 14px;
 	color: @gray5;
 
 	a {
 		.sl-sm;
 		color: @persianBlue60;
-		font-size: 12px;
+		font-size: 14px;
 
 	}
 }
@@ -114,6 +116,55 @@ input[type="text"] {
 
 	100% {
 		.transform(scale(1));
+	}
+}
+
+@-webkit-keyframes blowup { .blowup }
+@-moz-keyframes blowup { .blowup }
+@-ms-keyframes blowup { .blowup }
+@-o-keyframes blowup { .blowup }
+@keyframes blowup { .blowup }
+
+.blowup() {
+	0% {
+		.transform(scale(1));
+		opacity: 1;
+	}
+	95% {
+		opacity: 0.3;
+		.transform(scale(1.13));
+	}
+	100% {
+		opacity: 0;
+		.transform(scale(1.5));
+	}
+}
+
+@-webkit-keyframes shake { .shake }
+@-moz-keyframes shake { .shake }
+@-ms-keyframes shake { .shake }
+@-o-keyframes shake { .shake }
+@keyframes shake { .shake }
+
+.shake() {
+	0% {
+		.transform(rotate(0deg));
+	}
+
+	20% {
+		.transform(rotate(-5deg));
+	}
+
+	40% {
+		.transform(rotate(5deg));
+	}
+
+	60% {
+		.transform(rotate(-5deg));
+	}
+
+	100% {
+		.transform(rotate(0deg));
 	}
 }
 
