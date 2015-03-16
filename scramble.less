@@ -41,6 +41,10 @@ input[type="text"] {
 	transition: background-color;
 	transition-duration: 200ms;
 
+	&.empty {
+		color: @gray3;
+	}
+
 	&.matched {
 		background-color: @white;
 	}
