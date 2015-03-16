@@ -115,6 +115,12 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.ga.helpers({
+    gaKey: function () {
+      return Meteor.settings.public.ga.account;
+    }
+  });
+
   Template.scramble.events({
     'click .reset': function () {
       getWord();
