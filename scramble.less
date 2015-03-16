@@ -43,6 +43,10 @@ input[type="text"] {
 
 	&.empty {
 		color: @gray3;
+
+		span {
+			.animation(pulse, 1s, ease-in-out, infinite);
+		}
 	}
 
 	&.matched {
@@ -169,6 +173,26 @@ input[type="text"] {
 
 	100% {
 		.transform(rotate(0deg));
+	}
+}
+
+@-webkit-keyframes pulse { .pulse }
+@-moz-keyframes pulse { .pulse }
+@-ms-keyframes pulse { .pulse }
+@-o-keyframes pulse { .pulse }
+@keyframes pulse { .pulse }
+
+.pulse() {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.4;
+	}
+
+	100% {
+		opacity: 1;
 	}
 }
 
