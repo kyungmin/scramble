@@ -34,28 +34,10 @@ if (Meteor.isClient) {
     if (currentIndex === answer.length - 1) {
       if (scrambledWord === answer) {
         Session.set('points', points + answer.length);
-        $(".letter").addClass("correct");
-        $(".points").addClass("animate");
-
-        setTimeout(function() {
-          $(".points").removeClass("animate");
-          $(".letter").removeClass("correct");
-          getWord();
-        }, 400);
+        renderCorrect();
       } else {
-        $(".letter").addClass("incorrect");
-        $(".message.status").hide();
-        $(".message.fail").show();
-
-        setTimeout(function() {
-          Session.set('currentIndex', 0);
-          $(".letter").removeClass("incorrect");
-          $(".message.status").show();
-          $(".message.fail").hide();
-          $('input').val('');
-        }, 300);
+        renderIncorrect();
       }
-
     }
   });
 
@@ -91,6 +73,31 @@ if (Meteor.isClient) {
     });
 
     $(".words").html(html);
+  }
+
+  function renderCorrect() {
+    $(".points").addClass("animate");
+    $(".letter").addClass("correct");
+
+    setTimeout(function() {
+      $(".points").removeClass("animate");
+      $(".letter").removeClass("correct");
+      getWord();
+    }, 400);
+  }
+
+  function renderIncorrect() {
+    $(".letter").addClass("incorrect");
+    $(".message.status").hide();
+    $(".message.fail").show();
+
+    setTimeout(function() {
+      Session.set('currentIndex', 0);
+      $(".letter").removeClass("incorrect");
+      $(".message.status").show();
+      $(".message.fail").hide();
+      $('input').val('');
+    }, 300);
   }
 
   Template.scramble.helpers({
@@ -134,7 +141,7 @@ if (Meteor.isServer) {
       getWord: function () {
         this.unblock();
 
-        var url = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
+        var url = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&minCorpusCount=10000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
 
         return Meteor.http.call("GET", url);
       }
